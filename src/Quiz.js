@@ -1,7 +1,24 @@
-import Question from "./Question";
-import questionsData from "./questionsData";
+import Answers from "./Answers";
+import React from "react";
 
-export default function Quiz() {
+export default function Quiz(props) {
+  const [quiz, setQuiz] = React.useState(props.quizImported);
+
+  const quizElement = quiz.map((question) => {
+    return (
+      <div className="problem">
+        <div className="problem problem--question">{question.question}</div>
+        <Answers
+          answers={question.answers}
+          setQuiz={setQuiz}
+          // quiz={quiz}
+        />
+      </div>
+    );
+  });
+
+  /*
+
   const quiz = questionsData.results.map((question) => {
     return <Question 
             question={question.question} 
@@ -10,7 +27,12 @@ export default function Quiz() {
     />;
   });
 
+  */
+
   return (
-    <div className="container quiz">{quiz}</div>
-  )
+    <>
+      <div className="container quiz">{quizElement}</div>
+      <div>{JSON.stringify(quiz)}</div>
+    </>
+  );
 }

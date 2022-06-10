@@ -145,3 +145,7 @@ button:hover {
 .answer--clicked {
   background-color: #D6DBF5;
 }
+
+.answers-option-pressed {
+  background-color: #D6DBF5;
+}
