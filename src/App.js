@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import ReactDOM from "react-dom";
+import Quiz from "./Quiz";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Shad é lixo</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Quizzical App Under Construction XD
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  function clickStart() {
+    
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(
+        <Quiz />
+    )
+  }
+
+  return ( 
+    
+    <main className="container">
+      {/* <div className="blob"></div> */}
+      <div className="start start--header">Quizzical</div>
+      <div className="start start--description">
+        Test your general knowledge! Good Luck!
+      </div>
+      <button onClick={clickStart} className="start start--button">
+        Start Quiz
+      </button>
+    </main>
   );
 }
 
