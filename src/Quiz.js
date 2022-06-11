@@ -4,9 +4,20 @@ import React from "react";
 export default function Quiz(props) {
   const [quiz, setQuiz] = React.useState(props.quizImported);
 
-  function handleSubmit() {
-    
+  function handleSubmit() {}
+  /* still working on it 
+    const check = 1;
+    for (let i = 0; i < quiz.length; i++) {
+      sort.quiz[i] (elem=>elem.isPressed===true) ?
+      
+    }
+    if (check === 1) {
+      console.log('ok')
+    } else {
+      console.log('not filled')
+    }
   }
+*/
 
   const quizElement = quiz.map((question) => {
     return (
@@ -34,6 +45,12 @@ export default function Quiz(props) {
 
   */
 
-  return <div className="quiz--container">{quizElement}
-  <button className="check--button" onClick={handleSubmit}>Check Answers</button></div>;
+  return (
+    <div className="quiz--container">
+      {quizElement}
+      <button className="check--button" onClick={handleSubmit}>
+        Check Answers
+      </button>
+    </div>
+  );
 }
