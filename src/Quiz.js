@@ -5,13 +5,13 @@ export default function Quiz(props) {
   const [quiz, setQuiz] = React.useState(props.quizImported);
 
   function handleSubmit() {
-    console.log("clicked handlesubmit");
+    
   }
 
   const quizElement = quiz.map((question) => {
     return (
-      <div className="problem">
-        <div className="problem problem--question">{question.question}</div>
+      <div className="quiz--element">
+        <div className="quiz--element--question">{question.question}</div>
         <Answers
           answers={question.answers}
           setQuiz={setQuiz}
@@ -34,5 +34,6 @@ export default function Quiz(props) {
 
   */
 
-  return <div className="container quiz">{quizElement}</div>;
+  return <div className="quiz--container">{quizElement}
+  <button className="check--button" onClick={handleSubmit}>Check Answers</button></div>;
 }

@@ -35,7 +35,7 @@ code {
     monospace;
 }
 
-.container {
+.container, .quiz--container {
   margin: 30px;
   width: 650px;
   height: 650px;
@@ -43,11 +43,6 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.quiz-item {
-  margin: 20px 75px 20px 75px;
-  align-items: initial;
 }
 
 /* adding blob attempt = fail 
@@ -89,7 +84,7 @@ code {
   color: #293264;
 }
 
-.start--button {
+.start--button, .check--button {
   background: #4d5b9e;
   border-radius: 15px;
   font-family: "Inter";
@@ -107,7 +102,11 @@ code {
   margin: 0 200px;
 }
 
-.question {
+.quiz--element {
+  margin: 10px 30px;
+}
+
+.quiz--element--question {
   font-family: "Karla";
   font-style: normal;
   font-weight: 700;
@@ -116,11 +115,10 @@ code {
   color: #293264;
 }
 
-.answer-options {
+.quiz--element--answers {
   display: flex;
   gap: 12px;
-  border-bottom: 0.794239px solid #DBDEF0;
-
+  border-bottom: 0.8px solid #DBDEF0;
 }
 
 .answers-option {
@@ -138,14 +136,18 @@ code {
   margin-bottom: 15px;
 }
 
+.check--button {
+  margin-top: 20px;
+  width: 150px;
+  height: 40px;
+  align-self: center;
+}
+
 button:hover {
-  background-color: #D6DBF5;
+  background-color: #d6dbf5;
 }
 
-.answer--clicked {
-  background-color: #D6DBF5;
-}
 
-.answers-option-pressed {
-  background-color: #D6DBF5;
+.answer-option-pressed {
+  background-color: #d6dbf5;
 }

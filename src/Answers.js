@@ -30,7 +30,9 @@ export default function Answers(props) {
         //     ? "answers-option answers-option-pressed"
         //     : "answers-option"
         // }
-        className={`answers-option ${answer.isPressed && "answers-option-pressed"}`}
+        className={`answers-option ${
+          answer.isPressed && "answer-option-pressed"
+        }`}
         questionnumberans={answer.questionNumberAns}
         id={answer.id}
         key={answer.id}
@@ -41,15 +43,14 @@ export default function Answers(props) {
           )
         }
       >
-        {answer.answer} 
+        {answer.answer}
       </button>
     );
   });
 
   return (
-    <div className="problem problem--answers">
-      {/* <div className="question">{quiz.question}</div> */}
-      <div className="problem problem--answers answer">{answerElement}</div>
-    </div>
+    // <div className="problem problem--answers">
+    <div className="quiz--element--answers">{answerElement}</div>
+    // </div>
   );
 }
