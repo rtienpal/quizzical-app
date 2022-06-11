@@ -1,26 +1,34 @@
 export default function Answers(props) {
-  function handleClick(questionNumberAns, id) {
-    props.setQuiz((prevState) => {
-      const newArray = prevState.map((a) => {
-        // console.log(a.questionNumber, parseInt(questionNumberAns))
-        if (a.questionNumber === parseInt(questionNumberAns)) {
-          // console.log(a);
-          a.answers.map((b) => {
-            // console.log(b.id, id)
-            if (b.id === parseInt(id)) {
-              b.isPressed = !b.isPressed;
-            } else {
-              b.isPressed = false;
-            }
-            return b;
-          });
-        }
-        return a;
-      });
+  // handleclick using declarative programming
+  // function handleClick(clickedQuestionNumberAns, clickedId) {
+  //   props.setQuiz((prevState) => {
+  //     const newArray = prevState.map((question) => )
+  //   })
+  // }
 
-      return newArray;
-    });
-  }
+  // handleclick using imperative programming
+  // function handleClick(questionNumberAns, id) {
+  //   props.setQuiz((prevState) => {
+  //     const newArray = prevState.map((a) => {
+  //       // console.log(a.questionNumber, parseInt(questionNumberAns))
+  //       if (a.questionNumber === parseInt(questionNumberAns)) {
+  //         // console.log(a);
+  //         a.answers.map((b) => {
+  //           // console.log(b.id, id)
+  //           if (b.id === parseInt(id)) {
+  //             b.isPressed = !b.isPressed;
+  //           } else {
+  //             b.isPressed = false;
+  //           }
+  //           return b;
+  //         });
+  //       }
+  //       return a;
+  //     });
+
+  //     return newArray;
+  //   });
+  // }
 
   const answerElement = props.answers.map((answer) => {
     return (
@@ -45,12 +53,12 @@ export default function Answers(props) {
       >
         {answer.answer}
       </button>
-    );
-  });
+    )
+  })
 
   return (
     // <div className="problem problem--answers">
     <div className="quiz--element--answers">{answerElement}</div>
     // </div>
-  );
+  )
 }
