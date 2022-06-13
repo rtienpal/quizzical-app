@@ -1,10 +1,23 @@
 export default function Answers(props) {
   // handleclick using declarative programming
-  // function handleClick(clickedQuestionNumberAns, clickedId) {
-  //   props.setQuiz((prevState) => {
-  //     const newArray = prevState.map((question) => )
-  //   })
-  // }
+  function handleClick(clickedQuestionNumberAns, clickedId) {
+    props.setQuiz((prevState) => {
+      const newArray = prevState.map((question) => {
+        question.answers.map((answer) => {
+          if (answer.questionNumberAns === parseInt(clickedQuestionNumberAns)) {
+            if (answer.id === parseInt(clickedId)) {
+              answer.isPressed = !answer.isPressed
+            } else {
+              answer.isPressed = false
+            }
+          }
+          return answer
+        })
+        return question
+      })
+      return newArray
+    })
+  }
 
   // handleclick using imperative programming
   // function handleClick(questionNumberAns, id) {
