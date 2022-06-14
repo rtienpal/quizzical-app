@@ -70,8 +70,15 @@ export default function Answers(props) {
   })
 
   return (
-    // <div className="problem problem--answers">
-    <div className="quiz--element--answers">{answerElement}</div>
-    // </div>
+    <>
+      <div className="quiz--element--answers">
+        {answerElement}
+        {props.checkHasAnswer === 1 && (
+          <span className="quiz--element--question--needanswer">
+            Please Select an Answer
+          </span>
+        )}
+      </div>
+    </>
   )
 }

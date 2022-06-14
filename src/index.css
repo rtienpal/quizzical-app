@@ -113,6 +113,18 @@ code {
   font-size: 16px;
   line-height: 19px;
   color: #293264;
+  
+}
+
+.quiz--element--question--needanswer{
+  text-align: end;
+  color: red;
+  font-family: "Karla";
+  font-weight: 700;
+  font-size: 12px;
+  align-self:flex-start;
+  flex-grow: 4;
+  
 }
 
 .quiz--element--answers {
@@ -134,6 +146,7 @@ code {
   padding: 3px 10px;
   margin-top: 15px;
   margin-bottom: 15px;
+  max-width: 110px;
 }
 
 .check--button {

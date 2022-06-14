@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Quiz from "./Quiz";
 
-function BeforeStart({ setIsStarted }) {
+function BeforeStart(props) {
   return (
     <main className="container">
       {/* <div className="blob"></div> */}
@@ -10,7 +10,7 @@ function BeforeStart({ setIsStarted }) {
         Test your general knowledge! Good Luck!
       </div>
       <button
-        onClick={() => setIsStarted(true)}
+        onClick={() => props.setIsStarted(true)}
         className="start start--button"
       >
         Start Quiz

@@ -1,27 +1,27 @@
-import "./App.css";
-import questionsData from "./questionsData";
-import Start from "./Start";
+import "./App.css"
+import questionsData from "./questionsData"
+import Start from "./Start"
 
 function App() {
   function shuffleArray(arr) {
     return arr
       .map((a) => ({ sort: Math.random(), value: a }))
       .sort((a, b) => a.sort - b.sort)
-      .map((a) => a.value);
+      .map((a) => a.value)
   }
 
   function decodeHtml(html) {
-    var txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
-}
-  
+    var txt = document.createElement("textarea")
+    txt.innerHTML = html
+    return txt.value
+  }
 
   // all last answers are the correct answer
   const quizOrdered = questionsData.results.map((question, index) => {
     return {
       questionNumber: index + 1,
       question: decodeHtml(question.question),
+      checkHasAnswer: 0,
       answers: [
         {
           id: 1,
@@ -52,19 +52,20 @@ function App() {
           questionNumberAns: index + 1,
         },
       ],
-    };
-  });
+    }
+  })
 
   // correct answer is shuffled in the answers array
   const quizUnordered = quizOrdered.map((question) => {
     return {
       questionNumber: question.questionNumber,
       question: question.question,
+      checkHasAnswer: question.checkHasAnswer,
       answers: shuffleArray(question.answers),
-    };
-  });
+    }
+  })
 
-  return <Start quizUnordered={quizUnordered} />;
+  return <Start quizUnordered={quizUnordered} />
 }
 
-export default App;
+export default App

@@ -5,25 +5,44 @@ export default function Quiz(props) {
   const [quiz, setQuiz] = React.useState(props.quizImported)
 
   function handleSubmit() {
-    const check = quiz.every((question) =>
+    setQuiz((prevState)=>prevState.map((question)=> {
+      if (question.answers.some((answer) => answer.isPressed)) {
+        return {
+          ...question,
+          checkHasAnswer: 0
+        }
+      } else {
+        return {
+          ...question,
+          checkHasAnswer: 1
+        }
+      }
+    }))
+
+    const check = quiz.every((question) => question.checkHasAnswer === 0)
+    console.log(check)
+  }
+
+  function checkQuiz (){}
+
+  /*
+{
+    const check = quiz.every((question) => 
       question.answers.some((answer) => answer.isPressed)
     )
 
     console.log(check)
-  }
+  } */
 
   const quizElement = quiz.map((question) => {
     return (
-      <div 
-      className="quiz--element"
-      key={question.questionNumber}
-      >
+      <div className="quiz--element" key={question.questionNumber}>
         <div className="quiz--element--question">{question.question}</div>
         <Answers
           answers={question.answers}
           setQuiz={setQuiz}
           key={question.questionNumber}
-          // quiz={quiz}
+          checkHasAnswer={question.checkHasAnswer}
         />
       </div>
     )
