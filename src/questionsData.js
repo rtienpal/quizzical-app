@@ -49,5 +49,5 @@ export default {
       correct_answer: "Qatar",
       incorrect_answers: ["USA", "Japan", "Switzerland"],
     },
-  ]
-};
+  ],
+}

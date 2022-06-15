@@ -1,50 +1,37 @@
 import AnswersPre from "./AnswersPre"
 import React from "react"
 import AnswerPost from "./AnswersPost"
+import ReactDOM from "react-dom/client"
+import App from "./App"
 
 export default function Quiz(props) {
   const [quiz, setQuiz] = React.useState(props.quizImported)
+  const [triggerCheck, setTriggerCheck] = React.useState(false)
   const [checkQuiz, setCheckQuiz] = React.useState(false)
-  const [correctAnswers, setCorrectAnswers] = React.useState(0);
-  
+  const [correctAnswers, setCorrectAnswers] = React.useState(0)
 
   function handleSubmit() {
-    setQuiz((prevState)=>prevState.map((question)=> {
-      if (question.answers.some((answer) => answer.isPressed)) {
-        return {
-          ...question,
-          checkHasAnswer: 3
-        }
-      } else {
-        return {
-          ...question,
-          checkHasAnswer: 1
-        }
-      }
-    }))
-//have to understand why it having to click twice
+    setTriggerCheck(true)
     let check = false
-    check = quiz.every((question) => question.checkHasAnswer === 3)
-    console.log(check)
+    check = quiz.every((question) => question.checkHasAnswer)
     if (check) {
-    setCheckQuiz(true)
-    correctQuiz()
+      setCheckQuiz(true)
+      correctQuiz()
     }
   }
 
   function correctQuiz() {
-
-    let score = 0;
+    let score = 0
     quiz.map((question) => {
-      if (question.answers.some((answer) => (answer.isPressed && answer.isCorrect))) {
-        score = score + 1;
+      if (
+        question.answers.some((answer) => answer.isPressed && answer.isCorrect)
+      ) {
+        score = score + 1
       }
       return question
-  })
-  setCorrectAnswers(score)
-
-  
-}
+    })
+    setCorrectAnswers(score)
+  }
 
   /*
 {
@@ -59,13 +46,20 @@ export default function Quiz(props) {
     return (
       <div className="quiz--element" key={question.questionNumber}>
         <div className="quiz--element--question">{question.question}</div>
-        {checkQuiz ? <AnswerPost /> : <AnswersPre
-          answers={question.answers}
-          setQuiz={setQuiz}
-          key={question.questionNumber}
-          checkHasAnswer={question.checkHasAnswer}
-        />
-    }
+        {checkQuiz ? (
+          <AnswerPost
+            key={question.questionNumber}
+            answers={question.answers}
+          />
+        ) : (
+          <AnswersPre
+            answers={question.answers}
+            setQuiz={setQuiz}
+            key={question.questionNumber}
+            checkHasAnswer={question.checkHasAnswer}
+            triggerCheck={triggerCheck}
+          />
+        )}
       </div>
     )
   })
@@ -82,13 +76,29 @@ export default function Quiz(props) {
 
   */
 
+  function restartGame() {
+    const root = ReactDOM.createRoot(document.getElementById("root"))
+    root.render(<App />)
+  }
+
   return (
     <div className="quiz--container">
       {quizElement}
-      {!checkQuiz && <button className="check--button" onClick={handleSubmit}>
-        Check Answers
-      </button>}
-      {checkQuiz && <div className="finalscore">You scored 3/{correctAnswers} correct answers <button className="restart--button">Play Again</button></div>}
+      {!checkQuiz && (
+        <button className="check--button" onClick={handleSubmit}>
+          Check Answers
+        </button>
+      )}
+      {checkQuiz && (
+        <div className="finalscore">
+          <div className="finalscore--text">
+            You scored {correctAnswers}/5 correct answers
+          </div>
+          <button className="restart--button" onClick={restartGame}>
+            Play Again
+          </button>
+        </div>
+      )}
     </div>
   )
 }

@@ -1,5 +1,5 @@
-export default function AnswersPre(props) {
-  // handleclick using declarative and imperative programming
+export default function Answers(props) {
+  // handleclick using declarative programming
   function handleClick(clickedQuestionNumberAns, clickedId) {
     props.setQuiz((prevState) => {
       const newArray = prevState.map((question) => {
@@ -13,11 +13,9 @@ export default function AnswersPre(props) {
           }
           return answer
         })
-        if (question.answers.some((answer) => answer.isPressed)) {
-          question.checkHasAnswer = true
-        } else {
-          question.checkHasAnswer = false
-        }
+
+        
+
         return question
       })
       return newArray
@@ -75,15 +73,8 @@ export default function AnswersPre(props) {
   })
 
   return (
-    <>
-      <div className="quiz--element--answers">
-        {answerElement}
-        {props.triggerCheck === true && props.checkHasAnswer === false && (
-          <span className="quiz--element--question--needanswer">
-            Please Select an Answer
-          </span>
-        )}
-      </div>
-    </>
+    // <div className="problem problem--answers">
+    <div className="quiz--element--answers">{answerElement}</div>
+    // </div>
   )
 }
