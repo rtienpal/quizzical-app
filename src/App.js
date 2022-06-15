@@ -1,7 +1,6 @@
 import React from "react"
 import "./App.css"
 import Start from "./Start"
-import questionsData from "./questionsData"
 
 function App() {
   function shuffleArray(arr) {
@@ -17,20 +16,20 @@ function App() {
     return txt.value
   }
 
-  // const [questionsData, setQuestionsData] = React.useState([])
+  const [questionsData, setQuestionsData] = React.useState([])
+  const fetchApi = async () => {
+    const results = await fetch(
+      "https://opentdb.com/api.php?amount=5&type=multiple"
+    ).then((results) => results.json())
+    setQuestionsData(results)
+  }
 
-  // const api = "https://opentdb.com/api.php?amount=5&type=multiple"
-
-  // React.useEffect(() => {
-  //   fetch(api)
-  //     .then((response) => response.json())
-  //     .then((data) => setQuestionsData(data))
-  // }, [])
-
-  // console.log(questionsData)
+  React.useEffect(() => {
+    fetchApi()
+  }, [])
 
   // all last answers are the correct answer
-  const quizOrdered = questionsData.results.map((question, index) => {
+  const quizOrdered = questionsData.results?.map((question, index) => {
     return {
       questionNumber: index + 1,
       question: decodeHtml(question.question),
@@ -69,7 +68,7 @@ function App() {
   })
 
   // correct answer is shuffled in the answers array
-  const quizUnordered = quizOrdered.map((question) => {
+  const quizUnordered = quizOrdered?.map((question) => {
     return {
       questionNumber: question.questionNumber,
       question: question.question,
