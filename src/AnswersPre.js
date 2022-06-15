@@ -1,5 +1,5 @@
-export default function Answers(props) {
-  // handleclick using declarative programming
+export default function AnswersPre(props) {
+  // handleclick using declarative and imperative programming
   function handleClick(clickedQuestionNumberAns, clickedId) {
     props.setQuiz((prevState) => {
       const newArray = prevState.map((question) => {

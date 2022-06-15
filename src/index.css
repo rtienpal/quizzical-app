@@ -84,7 +84,7 @@ code {
   color: #293264;
 }
 
-.start--button, .check--button {
+.start--button, .check--button, .restart--button {
   background: #4d5b9e;
   border-radius: 15px;
   font-family: "Inter";
@@ -106,7 +106,7 @@ code {
   margin: 10px 30px;
 }
 
-.quiz--element--question {
+.quiz--element--question, .finalscore {
   font-family: "Karla";
   font-style: normal;
   font-weight: 700;
@@ -164,3 +164,13 @@ button:hover {
 .answer-option-pressed {
   background-color: #d6dbf5;
 }
+
+.answer-option-correct {
+  background-color: #d6dbf5;
+}
+
+.answer-option-incorrect {
+  background-color: #d6dbf5;
+}
+
+
