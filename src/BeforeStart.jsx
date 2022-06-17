@@ -6,7 +6,6 @@ export default function BeforeStart(props) {
     difficulty: "Any Difficulty",
     number: "5 questions",
   })
-  console.log(formsData)
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -64,7 +63,6 @@ export default function BeforeStart(props) {
   }
 
   function generateNewLink() {
-    console.log(formsData)
     let newLink = "https://opentdb.com/api.php?"
     let newCategoryLink = ""
     let newDifficultyLink = ""
@@ -84,7 +82,6 @@ export default function BeforeStart(props) {
       newCategoryLink +
       newDifficultyLink +
       "&type=multiple"
-    console.log(newLink)
     props.setApiLink(newLink)
   }
 
