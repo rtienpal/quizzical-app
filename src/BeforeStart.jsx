@@ -78,7 +78,12 @@ export default function BeforeStart(props) {
       newDifficultyLink =
         newDifficultyLink + `&difficulty=${difficultyVal[formsData.difficulty]}`
     }
-    newLink = newLink + newNumber + newCategoryLink + newDifficultyLink
+    newLink =
+      newLink +
+      newNumber +
+      newCategoryLink +
+      newDifficultyLink +
+      "&type=multiple"
     console.log(newLink)
     props.setApiLink(newLink)
   }

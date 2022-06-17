@@ -92,7 +92,7 @@ export default function Quiz(props) {
       {checkQuiz && (
         <div className="finalscore">
           <div className="finalscore--text">
-            You scored {correctAnswers}/5 correct answers
+            You scored {correctAnswers}/{quiz.length} correct answers
           </div>
           <button className="restart--button" onClick={restartGame}>
             Play Again
