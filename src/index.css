@@ -43,7 +43,7 @@ code {
 .quiz--container {
   margin: 30px;
   width: 650px;
-  height: 650px;
+  min-height: 650px;
   background-color: #f5f7fb;
   display: flex;
   flex-direction: column;
@@ -65,41 +65,24 @@ code {
     border-bottom: 0.8px solid #dbdef0;
   }
   .quiz--element--question,
-.finalscore {
-  font-size: 12px !important;
-  line-height: 15px !important;
-}
-.answers-option, .quiz--element--question--needanswer {
-  font-size: 8px !important;
-  padding: 1.5px 5px !important;
-  margin-top: 5px !important;
-  margin-bottom: 5px !important;
-  
-}
-.answers-option {
-  max-width: 80px !important;
-}
-
-
-  
-}
-
-
-
-/*
-
-@media screen and (max-width: 800px) {
-  .quiz--element--question,
-  .finalscore {
-    font-size: 10px;
-    line-height: 13px;
+  .finalscore, .form {
+    font-size: 11px !important;
+    line-height: 15px !important;
   }
-
-  
-  
-  
+  .answers-option,
+  .quiz--element--question--needanswer {
+    font-size: 8px !important;
+    padding: 1.5px 5px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+  }
+  .answers-option {
+    max-width: 80px !important;
+  }
+  select {
+    font-size: 9px;
+  }
 }
-*/
 
 .start--header {
   font-family: "Karla";
@@ -113,7 +96,8 @@ code {
   margin-bottom: 7px;
 }
 
-.start--description {
+.start--description,
+.form {
   margin-bottom: 29px;
   font-family: "Inter";
   font-style: normal;
@@ -122,6 +106,21 @@ code {
   line-height: 19px;
   text-align: center;
   color: #293264;
+}
+
+.form {
+  display: flex;
+  margin: 10px 30px;
+  align-self: center;
+}
+
+.form-number,
+.form-difficulty,
+.form-category {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 8px;
 }
 
 .start--button,
@@ -141,7 +140,7 @@ code {
   box-sizing: border-box;
   padding: 12px;
   cursor: pointer;
-  margin: 0 200px;
+  margin: 10px 200px;
 }
 
 .quiz--element {

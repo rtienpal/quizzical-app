@@ -1,8 +1,15 @@
 import React from "react"
 import "./App.css"
-import Start from "./Start"
+import BeforeStart from "./BeforeStart"
+import Quiz from "./Quiz"
 
 function App() {
+  const [isStarted, setIsStarted] = React.useState(false)
+  const [questionsData, setQuestionsData] = React.useState([])
+  const [apiLink, setApiLink] = React.useState([
+    "https://opentdb.com/api.php?amount=5&type=multiple",
+  ])
+
   function shuffleArray(arr) {
     return arr
       .map((a) => ({ sort: Math.random(), value: a }))
@@ -16,17 +23,14 @@ function App() {
     return txt.value
   }
 
-  const [questionsData, setQuestionsData] = React.useState([])
   const fetchApi = async () => {
-    const results = await fetch(
-      "https://opentdb.com/api.php?amount=5&type=multiple"
-    ).then((results) => results.json())
+    const results = await fetch(apiLink).then((results) => results.json())
     setQuestionsData(results)
   }
 
   React.useEffect(() => {
     fetchApi()
-  }, [])
+  }, [apiLink])
 
   // all last answers are the correct answer
   const quizOrdered = questionsData.results?.map((question, index) => {
@@ -77,7 +81,14 @@ function App() {
     }
   })
 
-  return <Start quizUnordered={quizUnordered} />
+  return (
+    <>
+      {isStarted && <Quiz quizImported={quizUnordered} />}
+      {!isStarted && (
+        <BeforeStart setIsStarted={setIsStarted} setApiLink={setApiLink} />
+      )}
+    </>
+  )
 }
 
 export default App
